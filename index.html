@@ -1,0 +1,1414 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Forgehold Technologies is an independent software studio building game engines, data tooling, and enterprise and financial systems. Directed by Usman Ahmad.">
+<meta name="author" content="Usman Ahmad">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Forgehold Technologies">
+<meta property="og:description" content="An independent software studio working at the foundation layer: game engines, data tooling, and the enterprise and financial systems that businesses run on.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Crect x='1' y='1' width='28' height='28' rx='2' fill='none' stroke='%23C6A054' stroke-width='2'/%3E%3Cpath d='M8 20 L15 7 L22 20 Z' fill='none' stroke='%23C6A054' stroke-width='2' stroke-linejoin='round'/%3E%3Cline x1='8' y1='23.5' x2='22' y2='23.5' stroke='%23C6A054' stroke-width='2'/%3E%3C/svg%3E">
+<style>
+  html { color-scheme: light; }
+  body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<title>Forgehold Technologies</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: institutional bands — utility strip, masthead, statement opening, product register, capabilities, practice, enquiries */
+  :root {
+    --bg: #EFF1F3;
+    --surface: #FFFFFF;
+    --surface-2: #F4F6F8;
+    --ink: #11151A;
+    --muted: #555D67;
+    --line: #D0D5DC;
+    --line-strong: #B4BCC6;
+    --brass: #7A5A14;
+    --steel: #22404F;
+
+    --font-display: "Cinzel", "Georgia", serif;
+    --font-serif: "Spectral", "Georgia", "Times New Roman", serif;
+    --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+
+    --maxw: 72rem;
+    --radius: 2px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0D0F13;
+      --surface: #14171C;
+      --surface-2: #1A1E24;
+      --ink: #E7EAEE;
+      --muted: #939AA4;
+      --line: #262B33;
+      --line-strong: #3A414B;
+      --brass: #C6A054;
+      --steel: #7FA6B8;
+      color-scheme: dark;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #0D0F13;
+    --surface: #14171C;
+    --surface-2: #1A1E24;
+    --ink: #E7EAEE;
+    --muted: #939AA4;
+    --line: #262B33;
+    --line-strong: #3A414B;
+    --brass: #C6A054;
+    --steel: #7FA6B8;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0 0 auto;
+    height: env(safe-area-inset-top, 0px);
+    z-index: 12;
+    background: var(--steel);
+  }
+
+  .wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--brass);
+    outline-offset: 3px;
+  }
+
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  /* ---------- Utility strip ---------- */
+
+  .utility {
+    background: var(--steel);
+    color: #F2F5F7;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .utility { color: #0C1014; }
+  }
+  :root[data-theme="dark"] .utility { color: #0C1014; }
+
+  .utility .wrap {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-block: 0.45rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* ---------- Masthead ---------- */
+
+  .masthead {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 11;
+    background: var(--surface);
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  .masthead .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    padding-block: 0.9rem;
+    flex-wrap: wrap;
+  }
+
+  .mark {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    text-decoration: none;
+  }
+
+  .mark svg { display: block; flex: none; }
+
+  .mark-text { display: flex; flex-direction: column; line-height: 1.2; }
+
+  .mark-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .mark-sub {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+
+  nav a {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    padding-block: 0.25rem;
+    border-bottom: 1px solid transparent;
+  }
+
+  nav a:hover { color: var(--ink); border-bottom-color: var(--brass); }
+
+  /* ---------- Statement opening ---------- */
+
+  .opening .wrap { padding-block: clamp(3rem, 8vw, 5rem) clamp(2rem, 5vw, 3rem); }
+
+  .opening .label { color: var(--brass); margin-bottom: 1.4rem; }
+
+  h1 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(2rem, 5.6vw, 3.4rem);
+    line-height: 1.14;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    max-width: 22ch;
+    margin: 0 0 1.5rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--brass);
+  }
+
+  .statement {
+    font-size: clamp(1.02rem, 2.2vw, 1.14rem);
+    color: var(--muted);
+    max-width: 44rem;
+    margin: 0;
+  }
+
+  .signature {
+    margin: clamp(2rem, 5vw, 2.75rem) 0 0;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--line-strong);
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+  }
+
+  .signature .label { color: var(--muted); }
+
+  .signature-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .signature-role {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brass);
+  }
+
+  .director-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.4rem, 3.4vw, 1.75rem);
+    letter-spacing: 0.04em;
+    margin: 0 0 0.4rem;
+  }
+
+  .director-role { color: var(--brass); margin: 0 0 1.2rem; }
+
+  .director-body p {
+    margin: 0 0 1.05rem;
+    color: var(--muted);
+    max-width: 62ch;
+  }
+
+  .director-body p:last-child { margin-bottom: 0; }
+
+  .director-body .director-lede {
+    color: var(--ink);
+    font-size: clamp(1.05rem, 2.3vw, 1.2rem);
+    line-height: 1.55;
+  }
+
+  /* ---------- Bands ---------- */
+
+  section.band { border-top: 1px solid var(--line-strong); }
+  section.band .wrap { padding-block: clamp(2.75rem, 7vw, 4.5rem); }
+
+  .band-alt { background: var(--surface-2); }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.25rem;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.1rem, 2.8vw, 1.35rem);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .section-note {
+    color: var(--muted);
+    font-size: 0.95rem;
+    max-width: 40ch;
+    margin: 0;
+  }
+
+  .rule {
+    height: 1px;
+    background: var(--line-strong);
+    margin-bottom: 2rem;
+  }
+
+  /* ---------- Product register ---------- */
+
+  .products { display: grid; gap: 0; }
+
+  .product {
+    border-bottom: 1px solid var(--line);
+    padding-block: clamp(1.5rem, 4vw, 2.1rem);
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: clamp(1rem, 3vw, 2.25rem);
+    align-items: start;
+  }
+
+  .product:first-child { border-top: 1px solid var(--line-strong); }
+
+  @media (max-width: 860px) {
+    .product { grid-template-columns: minmax(0, 1fr); gap: 1.1rem; }
+  }
+
+  .product-index {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    padding-top: 0.3rem;
+  }
+
+  .product-main { min-width: 0; }
+
+  .division {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin: 0 0 0.45rem;
+  }
+
+  .product h3 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(1.25rem, 3vw, 1.6rem);
+    line-height: 1.22;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.75rem;
+    text-wrap: balance;
+  }
+
+  .product p {
+    margin: 0 0 0.85rem;
+    color: var(--muted);
+    max-width: 52ch;
+  }
+
+  .product p:last-of-type { margin-bottom: 0; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 1.1rem; }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.04em;
+    padding: 0.22rem 0.5rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    color: var(--muted);
+    background: var(--surface);
+  }
+
+  .band-alt .tag { background: var(--bg); }
+
+  .spec { min-width: 0; display: grid; gap: 0.8rem; align-content: start; }
+
+  @media (max-width: 860px) {
+    .spec { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: 0.4rem; }
+  }
+
+  .spec-row { min-width: 0; }
+
+  .spec dt {
+    font-family: var(--font-mono);
+    font-size: 0.63rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.15rem;
+  }
+
+  .spec dd {
+    margin: 0;
+    font-size: 0.93rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ---------- Interface gallery ---------- */
+
+  .shots {
+    grid-column: 1 / -1;
+    margin-top: clamp(1.25rem, 3vw, 1.75rem);
+    padding-top: clamp(1.25rem, 3vw, 1.6rem);
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: clamp(0.9rem, 2.5vw, 1.4rem);
+  }
+
+  .shots-label {
+    grid-column: 1 / -1;
+    font-family: var(--font-mono);
+    font-size: 0.63rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .shot { margin: 0; min-width: 0; }
+
+  .shot-wide { grid-column: 1 / -1; }
+
+  .shot-narrow { max-width: 32rem; }
+
+  .shot a {
+    display: block;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--surface);
+  }
+
+  .shot a:hover { border-color: var(--brass); }
+
+  .shot img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .shot figcaption {
+    margin-top: 0.6rem;
+    font-size: 0.86rem;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+
+  .dot { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+  .dot-done { background: var(--steel); }
+  .dot-active { background: var(--brass); }
+
+  /* ---------- Capabilities ---------- */
+
+  .capabilities {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--line-strong);
+  }
+
+  .capability {
+    padding: 1.6rem 1.5rem 1.6rem 0;
+    border-bottom: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+    min-width: 0;
+  }
+
+  @media (max-width: 760px) {
+    .capability { border-right: 0; padding-right: 0; }
+  }
+
+  .capability h3 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin: 0.5rem 0 0.6rem;
+    letter-spacing: -0.005em;
+  }
+
+  .capability .label { color: var(--brass); }
+
+  .capability p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.94rem;
+    max-width: 38ch;
+  }
+
+  /* ---------- Practice ---------- */
+
+  .practice-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+    gap: clamp(1.5rem, 5vw, 4rem);
+  }
+
+  @media (max-width: 860px) {
+    .practice-grid { grid-template-columns: minmax(0, 1fr); }
+  }
+
+  .principles { display: grid; gap: 1.5rem; }
+
+  .principle { border-top: 1px solid var(--line-strong); padding-top: 0.9rem; min-width: 0; }
+
+  .principle h3 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: 1.12rem;
+    margin: 0.4rem 0 0.5rem;
+  }
+
+  .principle .label { color: var(--muted); }
+
+  .principle p { margin: 0; color: var(--muted); max-width: 58ch; }
+
+  .practice-lede {
+    font-size: clamp(1.1rem, 2.6vw, 1.3rem);
+    line-height: 1.5;
+    margin: 0;
+    max-width: 24ch;
+  }
+
+  /* ---------- Enquiries ---------- */
+
+  .enquiries {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: clamp(1.25rem, 4vw, 2.5rem);
+  }
+
+  .enquiry {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--brass);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    min-width: 0;
+  }
+
+  .enquiry h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin: 0 0 0.7rem;
+  }
+
+  .enquiry p { margin: 0 0 1rem; color: var(--muted); font-size: 0.94rem; }
+
+  .address-line {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+  }
+
+  .address {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    user-select: all;
+    word-break: break-all;
+  }
+
+  .btn {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.5rem 0.85rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--line-strong);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .btn:hover { border-color: var(--brass); }
+
+  .copy-note {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brass);
+  }
+
+  /* ---------- Footer ---------- */
+
+  footer { border-top: 1px solid var(--line-strong); background: var(--surface); }
+
+  footer .wrap {
+    padding-block: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: 1.5rem;
+  }
+
+  .footer-col { min-width: 0; }
+
+  .footer-col .label { color: var(--muted); margin-bottom: 0.6rem; }
+
+  .footer-col ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.3rem; font-size: 0.92rem; }
+
+  .footer-col a { text-decoration: none; color: var(--muted); }
+  .footer-col a:hover { color: var(--ink); }
+
+  .colophon {
+    border-top: 1px solid var(--line);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .colophon .wrap {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-block: 1.1rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="utility">
+  <div class="wrap">
+    <span>Forgehold Technologies</span>
+    <span>Engines &middot; Tools &middot; Systems</span>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="mark" href="#top">
+      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+        <rect x="1" y="1" width="28" height="28" rx="2" fill="none" stroke="var(--brass)" stroke-width="1.5"></rect>
+        <path d="M8 20 L15 7 L22 20 Z" fill="none" stroke="var(--steel)" stroke-width="1.5" stroke-linejoin="round"></path>
+        <line x1="8" y1="23.5" x2="22" y2="23.5" stroke="var(--brass)" stroke-width="1.5"></line>
+      </svg>
+      <span class="mark-text">
+        <span class="mark-name">Forgehold</span>
+        <span class="mark-sub">Technologies</span>
+      </span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#products">Products</a>
+      <a href="#direction">Direction</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#practice">Practice</a>
+      <a href="#company">Company</a>
+      <a href="#enquiries">Enquiries</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="opening">
+    <div class="wrap">
+      <p class="label">Engineering from first principles</p>
+      <h1>We build the software that <em>other software</em> is built on.</h1>
+      <p class="statement">
+        Forgehold Technologies is an independent software studio working at the foundation layer:
+        game engines, data tooling, and the enterprise and financial systems that businesses run on.
+        Every product in our register is designed, written, and shipped in house — from the rendering
+        pipeline to the installer.
+      </p>
+
+      <p class="signature">
+        <span class="label">Directed by</span>
+        <span class="signature-name">Usman Ahmad</span>
+        <span class="signature-role">Founder &amp; Principal Engineer</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="band" id="products">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Product Register</h2>
+        <p class="section-note">
+          Each entry is a standalone product, built and maintained under the Forgehold name.
+        </p>
+      </div>
+
+      <div class="products">
+
+        <article class="product">
+          <div class="product-index">FH&middot;01</div>
+          <div class="product-main">
+            <p class="division">Data Systems Division</p>
+            <h3>Forgehold Data Modeler</h3>
+            <p>
+              A visual, node-based data mining workbench. Analysts drag source, transform, and model nodes
+              onto a canvas, wire them into a stream, and execute the entire pipeline without writing code —
+              the working method established by SPSS Modeler, rebuilt on a modern Python core.
+            </p>
+            <p>
+              The execution engine resolves the node graph into a dependency-ordered pipeline, so changing one
+              upstream node re-runs only what depends on it. Designed for production analysis work, not demonstration.
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Node graph engine</span>
+              <span class="tag">Desktop GUI</span>
+              <span class="tag">Data pipelines</span>
+              <span class="tag">Predictive modelling</span>
+              <span class="tag">Model evaluation</span>
+            </div>
+          </div>
+          <dl class="spec">
+            <div class="spec-row">
+              <dt>Status</dt>
+              <dd><span class="status"><span class="dot dot-done"></span>Completed</span></dd>
+            </div>
+            <div class="spec-row">
+              <dt>Core</dt>
+              <dd>Python</dd>
+            </div>
+            <div class="spec-row">
+              <dt>Platform</dt>
+              <dd>Desktop</dd>
+            </div>
+            <div class="spec-row">
+              <dt>Category</dt>
+              <dd>Analytics tooling</dd>
+            </div>
+          </dl>
+
+          <div class="shots">
+            <p class="shots-label">Interface</p>
+            <figure class="shot shot-wide">
+              <a href="assets/modeler-canvas.png" target="_blank" rel="noopener">
+                <img src="assets/modeler-canvas.png" alt="The Data Modeler canvas with a node palette on the left and a stream running from a CSV source through type and partition nodes into logistic regression, decision tree, aggregate and K-Means branches" loading="lazy" width="1360" height="800">
+              </a>
+              <figcaption>
+                The canvas &mdash; a stream running from a CSV source through typing and a 70/30 partition,
+                then branching into logistic regression, a decision tree, aggregation and K-Means, each
+                terminating in its own output node.
+              </figcaption>
+            </figure>
+            <figure class="shot">
+              <a href="assets/modeler-audit.png" target="_blank" rel="noopener">
+                <img src="assets/modeler-audit.png" alt="Data audit output listing each column with its storage type, distribution chart, minimum, maximum, mean, standard deviation and missing value percentage" loading="lazy" width="940" height="280">
+              </a>
+              <figcaption>
+                Data audit &mdash; per-column storage, distribution, and summary statistics, with missing
+                values flagged before a model is ever fitted.
+              </figcaption>
+            </figure>
+            <figure class="shot">
+              <a href="assets/modeler-tree.png" target="_blank" rel="noopener">
+                <img src="assets/modeler-tree.png" alt="Decision tree diagram showing split conditions, sample counts and predicted class at each node" loading="lazy" width="740" height="420">
+              </a>
+              <figcaption>
+                Decision tree output &mdash; every split condition, sample count and predicted class
+                rendered as a diagram, alongside summary and rules views.
+              </figcaption>
+            </figure>
+            <figure class="shot">
+              <a href="assets/modeler-evaluation.png" target="_blank" rel="noopener">
+                <img src="assets/modeler-evaluation.png" alt="Model evaluation on held-out testing data showing accuracy, a confusion matrix with precision and recall, and mean confidence" loading="lazy" width="560" height="320">
+              </a>
+              <figcaption>
+                Evaluation &mdash; accuracy scored on held-out testing rows, with a confusion matrix,
+                precision and recall per class, so a model is judged on data it has not seen.
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product-index">FH&middot;02</div>
+          <div class="product-main">
+            <p class="division">Engine Technology Division</p>
+            <h3>FAGE &mdash; Forgehold Advanced Gaming Engine</h3>
+            <p>
+              A 3D game engine written from scratch in C++, with a managed C# layer for gameplay code.
+              The engine owns rendering, the scene and entity model, and the core runtime; C# is where the
+              games built on it are actually written.
+            </p>
+            <p>
+              Our long-horizon programme. The large systems are built first and the convenience layers
+              follow, because an engine is judged by what it can carry rather than how quickly it demos.
+            </p>
+            <div class="tags">
+              <span class="tag">C++</span>
+              <span class="tag">C# scripting runtime</span>
+              <span class="tag">Real-time 3D rendering</span>
+              <span class="tag">Windows / MSVC</span>
+            </div>
+          </div>
+          <dl class="spec">
+            <div class="spec-row">
+              <dt>Status</dt>
+              <dd><span class="status"><span class="dot dot-active"></span>In development</span></dd>
+            </div>
+            <div class="spec-row">
+              <dt>Core</dt>
+              <dd>C++</dd>
+            </div>
+            <div class="spec-row">
+              <dt>Platform</dt>
+              <dd>Windows</dd>
+            </div>
+            <div class="spec-row">
+              <dt>Category</dt>
+              <dd>Engine technology</dd>
+            </div>
+          </dl>
+        </article>
+
+        <article class="product">
+          <div class="product-index">FH&middot;03</div>
+          <div class="product-main">
+            <p class="division">Financial Systems Division</p>
+            <h3>Forgehold Digital Payments Platform</h3>
+            <p>
+              A Spring Boot payments backend covering the full account lifecycle: customer management,
+              digital wallets, wallet-to-wallet transfers, and complete transaction history, with access
+              secured by JWT authentication through Spring Security.
+            </p>
+            <p>
+              The engineering weight sits in the transfer path. Transaction processing is built so that
+              value is never lost or duplicated between two wallets, and the invariant is held under test
+              rather than assumed.
+            </p>
+            <div class="tags">
+              <span class="tag">Java 21</span>
+              <span class="tag">Spring Boot</span>
+              <span class="tag">Spring Security / JWT</span>
+              <span class="tag">Spring Data JPA</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">JUnit</span>
+            </div>
+          </div>
+          <dl class="spec">
+            <div class="spec-row">
+              <dt>Status</dt>
+              <dd><span class="status"><span class="dot dot-done"></span>Completed</span></dd>
+            </div>
+            <div class="spec-row">
+              <dt>Core</dt>
+              <dd>Java 21</dd>
+            </div>
+            <div class="spec-row">
+              <dt>Platform</dt>
+              <dd>Server / REST</dd>
+            </div>
+            <div class="spec-row">
+              <dt>Category</dt>
+              <dd>Payments infrastructure</dd>
+            </div>
+          </dl>
+
+          <div class="shots">
+            <p class="shots-label">The platform in operation</p>
+            <figure class="shot">
+              <a href="assets/payments-transfer.png" target="_blank" rel="noopener">
+                <img src="assets/payments-transfer.png" alt="Two wallet deposits followed by a wallet-to-wallet transfer, each with a unique reference and COMPLETED status, and the resulting wallet balances" loading="lazy" width="498" height="883">
+              </a>
+              <figcaption>
+                A transfer end to end &mdash; two deposits, a wallet-to-wallet transfer of PKR 5,000, and
+                the resulting balances. Value leaves one wallet exactly as it arrives in the other, and
+                every movement carries its own reference and status.
+              </figcaption>
+            </figure>
+            <figure class="shot">
+              <a href="assets/payments-customers.png" target="_blank" rel="noopener">
+                <img src="assets/payments-customers.png" alt="An authenticated GET request to the customers endpoint returning five customer records" loading="lazy" width="805" height="297">
+              </a>
+              <figcaption>
+                The customer API under JWT authentication &mdash; a token issued at login is required on
+                every request that follows.
+              </figcaption>
+            </figure>
+            <figure class="shot shot-wide">
+              <a href="assets/payments-schema.png" target="_blank" rel="noopener">
+                <img src="assets/payments-schema.png" alt="Generated PostgreSQL schema for users, customers, transactions, wallet transactions and wallets, with exact decimal money columns and status and type constraints" loading="lazy" width="1315" height="262">
+              </a>
+              <figcaption>
+                The PostgreSQL schema the platform maps onto. Money is stored as exact decimal rather than
+                floating point, and status and transaction type are constrained in the database itself, so
+                an invalid row cannot be written even by a caller that bypasses the service.
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product-index">FH&middot;04</div>
+          <div class="product-main">
+            <p class="division">Enterprise Systems Division</p>
+            <h3>Forgehold Nexus ERP</h3>
+            <p>
+              A desktop management system that consolidates inventory, stock, customers, billing, and sales
+              into a single application. Invoices are generated directly from sales records and reporting runs
+              over the same data, so a business keeps one authoritative set of books.
+            </p>
+            <p>
+              Built on Java Swing over SQLite through JDBC and packaged with jpackage into a native installer:
+              it deploys as a real desktop application, with no runtime setup asked of the customer.
+            </p>
+            <div class="tags">
+              <span class="tag">Java 21</span>
+              <span class="tag">Java Swing</span>
+              <span class="tag">SQLite</span>
+              <span class="tag">JDBC</span>
+              <span class="tag">Apache Maven</span>
+              <span class="tag">jpackage</span>
+            </div>
+          </div>
+          <dl class="spec">
+            <div class="spec-row">
+              <dt>Status</dt>
+              <dd><span class="status"><span class="dot dot-done"></span>Completed</span></dd>
+            </div>
+            <div class="spec-row">
+              <dt>Core</dt>
+              <dd>Java 21</dd>
+            </div>
+            <div class="spec-row">
+              <dt>Platform</dt>
+              <dd>Desktop</dd>
+            </div>
+            <div class="spec-row">
+              <dt>Category</dt>
+              <dd>Business management</dd>
+            </div>
+          </dl>
+
+          <div class="shots">
+            <p class="shots-label">Interface</p>
+            <figure class="shot">
+              <a href="assets/nexus-dashboard.png" target="_blank" rel="noopener">
+                <img src="assets/nexus-dashboard.png" alt="Nexus ERP dashboard showing product and customer totals, daily sales, recent bills and a low-stock watchlist" loading="lazy" width="1540" height="900">
+              </a>
+              <figcaption>
+                Dashboard &mdash; inventory and customer totals, the day's sales, and a live watchlist of
+                items approaching their reorder level.
+              </figcaption>
+            </figure>
+            <figure class="shot">
+              <a href="assets/nexus-stock.png" target="_blank" rel="noopener">
+                <img src="assets/nexus-stock.png" alt="Nexus ERP stock screen showing current quantities against reorder levels and a dated stock movement history" loading="lazy" width="1540" height="900">
+              </a>
+              <figcaption>
+                Stock control &mdash; current quantities measured against reorder levels, with every
+                movement in and out recorded as an auditable history.
+              </figcaption>
+            </figure>
+            <figure class="shot">
+              <a href="assets/nexus-reports.png" target="_blank" rel="noopener">
+                <img src="assets/nexus-reports.png" alt="Nexus ERP sales and profit report for a date range, with totals, a per-bill breakdown and CSV export" loading="lazy" width="1540" height="900">
+              </a>
+              <figcaption>
+                Sales and profit reporting &mdash; totals over any date range, broken down per bill,
+                with CSV export for the accountant.
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product-index">FH&middot;05</div>
+          <div class="product-main">
+            <p class="division">Enterprise Systems Division</p>
+            <h3>Distributed Commerce Platform</h3>
+            <p>
+              A complete e-commerce backend decomposed into independent C# services — catalog, orders,
+              and the supporting domains — each owning its own responsibility and communicating across
+              service boundaries rather than sharing one codebase.
+            </p>
+            <p>
+              Clients reach the platform through a single API gateway, which routes to the user, product,
+              and order services behind it. Each service owns its own database, and they announce what has
+              happened &mdash; an order created, an order cancelled &mdash; as events on RabbitMQ instead of
+              calling one another directly, so no service waits on another to finish its work.
+            </p>
+            <p>
+              The whole platform runs under Docker Compose: every service and the message broker come up
+              together as containers, which is how a distributed system has to be developed if it is ever
+              going to be deployed as one.
+            </p>
+            <div class="tags">
+              <span class="tag">C#</span>
+              <span class="tag">.NET</span>
+              <span class="tag">Microservices</span>
+              <span class="tag">API Gateway</span>
+              <span class="tag">RabbitMQ</span>
+              <span class="tag">Docker Compose</span>
+              <span class="tag">Entity Framework Core</span>
+              <span class="tag">REST APIs</span>
+            </div>
+          </div>
+          <dl class="spec">
+            <div class="spec-row">
+              <dt>Status</dt>
+              <dd><span class="status"><span class="dot dot-done"></span>Completed</span></dd>
+            </div>
+            <div class="spec-row">
+              <dt>Core</dt>
+              <dd>C# / .NET</dd>
+            </div>
+            <div class="spec-row">
+              <dt>Platform</dt>
+              <dd>Server / REST</dd>
+            </div>
+            <div class="spec-row">
+              <dt>Category</dt>
+              <dd>Commerce infrastructure</dd>
+            </div>
+          </dl>
+
+          <div class="shots">
+            <p class="shots-label">The platform in operation</p>
+            <figure class="shot shot-wide">
+              <a href="assets/commerce-containers.png" target="_blank" rel="noopener">
+                <img src="assets/commerce-containers.png" alt="Docker Desktop showing the api gateway, order service, product service, user service and RabbitMQ all running as containers" loading="lazy" width="1608" height="897">
+              </a>
+              <figcaption>
+                The platform running as containers &mdash; gateway, user, product and order services and the
+                message broker, each isolated and brought up together by Docker Compose.
+              </figcaption>
+            </figure>
+            <figure class="shot shot-wide">
+              <a href="assets/commerce-gateway.png" target="_blank" rel="noopener">
+                <img src="assets/commerce-gateway.png" alt="API gateway startup log printing its routing table, mapping the auth, products and orders paths to the user, product and order services" loading="lazy" width="1108" height="327">
+              </a>
+              <figcaption>
+                The gateway's routing table at startup. Clients see one address; which service answers a
+                given path is decided here, not in the client.
+              </figcaption>
+            </figure>
+            <figure class="shot shot-wide">
+              <a href="assets/commerce-queues.png" target="_blank" rel="noopener">
+                <img src="assets/commerce-queues.png" alt="RabbitMQ management interface showing the order-created and order-cancelled queues in a running state" loading="lazy" width="1917" height="678">
+              </a>
+              <figcaption>
+                The durable event queues &mdash; order created and order cancelled. A service publishes what
+                happened and moves on; whoever cares picks the message up, even if it was down at the time.
+              </figcaption>
+            </figure>
+            <figure class="shot shot-narrow">
+              <a href="assets/commerce-order.png" target="_blank" rel="noopener">
+                <img src="assets/commerce-order.png" alt="A 201 Created response returning a new order with its status, total and line items" loading="lazy" width="547" height="502">
+              </a>
+              <figcaption>
+                An order placed through the gateway &mdash; created with its line items, its total, and a
+                pending status, in 580 milliseconds across services.
+              </figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product-index">FH&middot;06</div>
+          <div class="product-main">
+            <p class="division">Interactive Entertainment Division</p>
+            <h3>The Haunted Grounds</h3>
+            <p>
+              A 4v1 asymmetrical online horror game built in Unreal Engine 5. Four survivors work objectives
+              across a map while a single hunting player moves to stop them — a format that lives or dies on
+              its multiplayer replication, match-state logic, AI perception, and chase systems.
+            </p>
+            <p>
+              Implemented end to end in Blueprints, with the networked gameplay systems built to hold under
+              live match conditions rather than in a single-player test.
+            </p>
+            <div class="tags">
+              <span class="tag">Unreal Engine 5</span>
+              <span class="tag">Blueprints</span>
+              <span class="tag">Multiplayer replication</span>
+              <span class="tag">AI perception</span>
+            </div>
+          </div>
+          <dl class="spec">
+            <div class="spec-row">
+              <dt>Status</dt>
+              <dd><span class="status"><span class="dot dot-done"></span>Completed</span></dd>
+            </div>
+            <div class="spec-row">
+              <dt>Core</dt>
+              <dd>Unreal Engine 5</dd>
+            </div>
+            <div class="spec-row">
+              <dt>Platform</dt>
+              <dd>PC</dd>
+            </div>
+            <div class="spec-row">
+              <dt>Category</dt>
+              <dd>Multiplayer game</dd>
+            </div>
+          </dl>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="direction">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Direction</h2>
+      </div>
+      <div class="rule"></div>
+      <div class="practice-grid">
+        <div>
+          <p class="director-name">Usman Ahmad</p>
+          <p class="label director-role">Founder &amp; Principal Engineer</p>
+          <div class="tags">
+            <span class="tag">C++</span>
+            <span class="tag">C#</span>
+            <span class="tag">Java</span>
+            <span class="tag">Python</span>
+            <span class="tag">Unreal Engine 5</span>
+          </div>
+        </div>
+        <div class="director-body">
+          <p class="director-lede">
+            Usman Ahmad builds the layer most studios buy in.
+          </p>
+          <p>
+            His work runs the full depth of the stack, and the register reflects it: a 3D engine written
+            from scratch in C++, with a managed C# runtime layered on top for gameplay code; networked
+            multiplayer systems in Unreal Engine 5; a payments backend where the correctness of a single
+            transfer is the entire product; and a graph execution engine that resolves analytical
+            pipelines into dependency order.
+          </p>
+          <p>
+            He directs every product in the register personally — architecture, implementation, testing,
+            and native packaging — and works across C++, C#, Java, and Python, choosing the language a
+            problem calls for rather than the one already at hand.
+          </p>
+          <p>
+            One preference runs through all of it: the renderer over the interface shell, the transaction
+            path over the endpoint list, the graph execution order over the node palette. The difficult
+            parts are the ones that decide whether a system holds.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-alt" id="capabilities">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Capabilities</h2>
+        <p class="section-note">
+          The disciplines our products are engineered across.
+        </p>
+      </div>
+
+      <div class="capabilities">
+        <div class="capability">
+          <p class="label">01 &middot; Engine Technology</p>
+          <h3>Real-time 3D engines</h3>
+          <p>
+            Rendering pipelines, scene and entity models, and scripting runtimes written in C++
+            from the ground up.
+          </p>
+        </div>
+        <div class="capability">
+          <p class="label">02 &middot; Game Development</p>
+          <h3>Multiplayer gameplay systems</h3>
+          <p>
+            Networked replication, match state, and AI behaviour for online titles built in Unreal Engine 5.
+          </p>
+        </div>
+        <div class="capability">
+          <p class="label">03 &middot; Data Engineering</p>
+          <h3>Analytical tooling</h3>
+          <p>
+            Visual pipeline tools, graph execution engines, and the interfaces analysts use to
+            interrogate a dataset.
+          </p>
+        </div>
+        <div class="capability">
+          <p class="label">04 &middot; Backend Systems</p>
+          <h3>Distributed services</h3>
+          <p>
+            Service decomposition, REST interfaces, authentication, and data consistency across
+            independent services.
+          </p>
+        </div>
+        <div class="capability">
+          <p class="label">05 &middot; Enterprise Software</p>
+          <h3>Business platforms</h3>
+          <p>
+            Inventory, billing, and sales systems delivered as native desktop applications with
+            their own installers.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="practice">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Engineering Practice</h2>
+      </div>
+      <div class="rule"></div>
+      <div class="practice-grid">
+        <p class="practice-lede">
+          How a thing is built determines what it can carry.
+        </p>
+        <div class="principles">
+          <div class="principle">
+            <p class="label">Foundation first</p>
+            <h3>The hard systems are built before the convenient ones</h3>
+            <p>
+              An engine's renderer, a payment platform's transfer path, a pipeline tool's execution
+              order — the parts that are expensive to change later are designed first, while they can
+              still be designed.
+            </p>
+          </div>
+          <div class="principle">
+            <p class="label">Built in house</p>
+            <h3>We write the layer underneath</h3>
+            <p>
+              Our products are not assembled from frameworks that make the interesting decisions for us.
+              Where the engine, the execution model, or the data layer is the product, we build it ourselves.
+            </p>
+          </div>
+          <div class="principle">
+            <p class="label">Shipped, not demonstrated</p>
+            <h3>A product is finished when it installs and runs</h3>
+            <p>
+              Native packaging, real databases, and tested transaction paths are part of the work,
+              not an afterthought once the features are done.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-alt" id="company">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Company</h2>
+      </div>
+      <div class="rule"></div>
+      <div class="practice-grid">
+        <p class="practice-lede">
+          An engineering studio, directed by the person who writes the code.
+        </p>
+        <div>
+          <p style="margin:0 0 1rem;max-width:60ch">
+            Forgehold Technologies is an independent software studio founded and directed by
+            <strong style="font-weight:500">Usman Ahmad</strong>. The studio exists to work at the
+            foundation layer of software — engines, tools, and systems — rather than on the surface of it,
+            and to take on the problems that have to be solved rather than configured.
+          </p>
+          <p style="margin:0 0 1rem;max-width:60ch;color:var(--muted)">
+            Our register spans engine technology, interactive entertainment, data tooling, and enterprise
+            and financial systems — from a 3D engine in C++ to a payments backend in Java. Each product is
+            designed, written, tested, and packaged within the studio. We take on work in engine and tools
+            development, multiplayer gameplay systems, data tooling, and backend platforms.
+          </p>
+          <div class="tags">
+            <span class="tag">Independent</span>
+            <span class="tag">Self-funded</span>
+            <span class="tag">Pakistan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="enquiries">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Enquiries</h2>
+        <p class="section-note">
+          We read every message and reply to those with a real proposal behind them.
+        </p>
+      </div>
+
+      <div class="enquiries">
+        <div class="enquiry">
+          <h3>General &amp; Partnerships</h3>
+          <p>
+            Product enquiries, engineering engagements, and collaboration proposals.
+          </p>
+          <div class="address-line">
+            <span class="address" id="email-address">ujbravo8@gmail.com</span>
+            <button class="btn" id="copy-email" type="button">Copy</button>
+            <span class="copy-note" id="copy-note" hidden>Copied</span>
+          </div>
+        </div>
+        <div class="enquiry">
+          <h3>Office</h3>
+          <p>
+            Forgehold Technologies operates as a distributed studio and works with clients remotely.
+          </p>
+          <div class="address-line">
+            <span class="address">Pakistan &middot; UTC+05:00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-col">
+      <p class="label">Forgehold Technologies</p>
+      <ul>
+        <li>Independent software studio</li>
+        <li>Usman Ahmad — Founder &amp; Principal Engineer</li>
+        <li>Engines, tools &amp; systems</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="label">Products</p>
+      <ul>
+        <li><a href="#products">Forgehold Data Modeler</a></li>
+        <li><a href="#products">FAGE Engine</a></li>
+        <li><a href="#products">Digital Payments Platform</a></li>
+        <li><a href="#products">Nexus ERP</a></li>
+        <li><a href="#products">The Haunted Grounds</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="label">Studio</p>
+      <ul>
+        <li><a href="#direction">Direction</a></li>
+        <li><a href="#capabilities">Capabilities</a></li>
+        <li><a href="#practice">Engineering practice</a></li>
+        <li><a href="#company">Company</a></li>
+        <li><a href="#enquiries">Enquiries</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="colophon">
+    <div class="wrap">
+      <span>&copy; 2026 Forgehold Technologies</span>
+      <span>All products built in house</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Copy the enquiries address to the clipboard, falling back to selecting the text.
+  (function () {
+    var button = document.getElementById('copy-email');
+    var address = document.getElementById('email-address');
+    var note = document.getElementById('copy-note');
+    if (!button || !address) { return; }
+
+    function confirmCopied() {
+      if (!note) { return; }
+      note.hidden = false;
+      window.setTimeout(function () { note.hidden = true; }, 2000);
+    }
+
+    function selectAddress() {
+      try {
+        var range = document.createRange();
+        range.selectNodeContents(address);
+        var selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+      } catch (error) {
+        // Selection is unavailable; the address remains visible as plain text.
+      }
+    }
+
+    button.addEventListener('click', function () {
+      var text = address.textContent.trim();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(confirmCopied, selectAddress);
+      } else {
+        selectAddress();
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
